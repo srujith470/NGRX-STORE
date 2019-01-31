@@ -12,10 +12,15 @@ type AuthState = {
   loggedIn : boolean,
   user: User
 } // this is object with authentication properties 
+
+const initialAuthState: AuthState = {
+  loggedIn: false,
+  user: undefined
+}
 export interface AppState {
     auth: AuthState  // add the authentication properties object to STORE
 }
-function authReducer(state:AuthState, action) :AuthState {
+function authReducer(state:AuthState = initialAuthState, action) :AuthState {
     switch(action.type){
       case AuthActionTypes.LoginAction:
       return{
