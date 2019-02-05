@@ -20,7 +20,6 @@ import { environment } from '../environments/environment';
 import {RouterStateSerializer, StoreRouterConnectingModule} from "@ngrx/router-store";
 
 import { EffectsModule } from '@ngrx/effects';
-import { AppStateEffects } from './app-state.effects';
 import { reducers, metaReducers } from './reducers';
 import { AuthGuard } from './auth/auth.guard';
 
@@ -53,9 +52,9 @@ const routes: Routes = [
         MatListModule,
         MatToolbarModule,
         AuthModule.forRoot(),
-        EffectsModule.forRoot([AppStateEffects]),
         StoreModule.forRoot(reducers, { metaReducers }),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
+        EffectsModule.forRoot([])
     ],
     providers: [],
     bootstrap: [AppComponent]
